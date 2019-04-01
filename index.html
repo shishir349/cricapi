@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <title>CricFuzz</title>
+      <style>
+      body{
+          background: #09a3fc;
+  background: linear-gradient(to right, rgb(233, 118, 98), rgb(238, 51, 255));
+}
+            h1 { 
+  display: block;
+  font-size: 5em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+      </style>
+      <script>
+         var settings = {
+           "async": true,
+           "crossDomain": true,
+           "url": " http://cricapi.com/api/cricketScore?apikey=sFUfGBnubFXQXbxv1KywJwebqUs2&unique_id=1175368",
+           "method": "GET"
+         }	
+		 $.ajax(settings).done(function (response) {
+           console.log(response);
+
+           var content = response;
+        
+           $("#paragraph").append(content.score);
+           $("#paragraph2").append(content['team-1']);
+           $("#paragraph3").append(content['team-2']);
+         });
+
+         function reloadPage()
+{
+  window.location.reload();
+}
+      </script>
+   </head>
+   <body>
+   <center>
+       <div class="container">
+      <h1>Cricket Scores</h1>
+      <br><br>
+      <p class="btn btn-success "id="paragraph">Status: </p><br><br>
+      <p id="paragraph2" class="btn btn-primary">Team 1: </p><br><br>
+      <h4 class="btn btn-danger"><span class="glyphicon glyphicon-info-sign"></span> VS.</h4><br><br>
+<p id="paragraph3" class="btn btn-info">Team 2: </p><br><br>
+<button type="submit" class="btn btn-basic"  onclick="reloadPage()"><span class="glyphicon glyphicon-repeat"></span> Refresh Scores</button>
+</div>
+</center>
+   </body>
+</html>
